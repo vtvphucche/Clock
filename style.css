@@ -1,0 +1,30 @@
+.image-container {
+    position: relative;
+  }
+  
+  .overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the text */
+    color: white; /* Text color */
+    font-size: 24px;
+    text-align: center;
+  }
+
+@font-face {
+    font-family: MyriadPro; /* Replace with your desired font name */
+    src: url('font/Myriad.otf') format('opentype');
+}
+
+p {
+    font-family: MyriadPro;
+}
+
+.container {
+    display: flex;
+  }
+
+.controls {
+    display: flex;
+}

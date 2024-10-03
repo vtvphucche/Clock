@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
+    <script src="https://unpkg.com/mdui@2/mdui.global.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+      {
+        "imports": {
+          "@material/web/": "https://esm.run/@material/web/"
+        }
+      }
+    </script>
+    <script type="module">
+      import '@material/web/all.js';
+      import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+  
+      document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+    </script>
+    <title>TV Visual Generator</title>
+    <meta name="description" content="Our first page">
+    <meta name="keywords" content="html tutorial template">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @font-face {
+              font-family: 'Google Sans';
+              font-style: normal;
+              font-weight: 400;
+              font-display: swap;
+              src: url(/fonts/regular.woff2) format('woff2');
+              unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD
+        }
+
+        @font-face { font-family: MyriadPro; src: url('font/Myriad.otf'); } 
+        .displaytime {
+           font-family: MyriadPro;
+        }
+
+        @font-face { font-family: UTMHelve; src: url('font/UTM HelveBold.ttf'); } 
+        .prog {
+           font-family: UTMHelve;
+        }
+
+        * {
+          font-family: Google Sans;
+        }
+    </style>
+</head>
+
+<body>
+  <div>
+    <br><br>
+        <h1 class="md-typescale-body-large" style="font-size: 250%; line-height: 1.5;">Changelog</h1>
+        <h1 class="md-typescale-body-large">Xem những bản cập nhật của trang web này</h1>
+        <mdui-card variant="outlined" style="width: 90%; margin-top: 10px; margin-left: 20px; margin-bottom: 10px;">
+          <h1 class="md-typescale-body-large" style="margin-left: 20px; margin-top: 20px;">
+            <p style="font-size: 170%;"><b>02.10.2024</b></p>
+            
+            Trang web chính thức được thành lập.
+            Chào mừng bạn đến với công cụ tạo đồng hồ số VTV
+            <br>
+            <b>Tính năng</b>
+            <br>
+            •   Thêm đồng hồ VTV 2014
+            <br>
+            •   Thêm tính năng xuất hình ảnh đồng hồ VTV 2014
+          </h1>
+        </mdui-card>
+        <h1 class="md-typescale-body-large"></h1>
+          Tạo bởi
+          <mdui-avatar src="color_fix.png"></mdui-avatar>
+          <a href="https://youtube.com/@vtvphụcchế" style="text-decoration: none;">VTV Phục chế </a>
+        </h1>
+  </div>
+    <mdui-navigation-bar value="changelog" label-visibility="true">
+      <mdui-navigation-bar-item href="index.html" icon="home--filled" value="recent">Trang chủ</mdui-navigation-bar-item>
+      <mdui-navigation-bar-item href="guide.html" icon="info--filled" value="images">Giới thiệu</mdui-navigation-bar-item>
+      <mdui-navigation-bar-item href="changelog.html" icon="info--filled" value="changelog">Changelog</mdui-navigation-bar-item>
+      <mdui-navigation-bar-item href="saved.html" icon="bookmark--filled" value="library">Đã lưu</mdui-navigation-bar-item>
+    </mdui-navigation-bar>
+</body>
+</html>

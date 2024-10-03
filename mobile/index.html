@@ -1,0 +1,261 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
+    <script src="https://unpkg.com/mdui@2/mdui.global.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+      {
+        "imports": {
+          "@material/web/": "https://esm.run/@material/web/"
+        }
+      }
+    </script>
+    <script type="module">
+      import '@material/web/all.js';
+      import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+  
+      document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+    </script>
+    <title>TV Visual Generator</title>
+    <meta name="description" content="Our first page">
+    <meta name="keywords" content="html tutorial template">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @font-face {
+              font-family: 'Google Sans';
+              font-style: normal;
+              font-weight: 400;
+              font-display: swap;
+              src: url(/fonts/regular.woff2) format('woff2');
+              unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD
+        }
+
+        @font-face { font-family: MyriadPro; src: url('font/Myriad.otf'); } 
+        .displaytime {
+           font-family: MyriadPro;
+        }
+
+        @font-face { font-family: UTMHelve; src: url('font/UTM HelveBold.ttf'); } 
+        .prog {
+           font-family: UTMHelve;
+        }
+
+        * {
+          font-family: Google Sans;
+        }
+    </style>
+</head>
+
+<body>
+    <mdui-layout>
+      <mdui-top-app-bar class="example-top-app-bar">
+        <mdui-top-app-bar-title>Tạo đồng hồ</mdui-top-app-bar-title>
+      </mdui-top-app-bar>
+    
+      <mdui-layout-main class="example-layout-main" style="min-height: 300px; margin-left: 30px;">
+        <br><br>
+        <h1 class="md-typescale-body-large" style="font-size: 150%; line-height: 1.5;">Tạo bảng hiển thị đồng hồ và tên chương trình</h1>
+        <h1 class="md-typescale-body-large">Tại đây bạn có thể tạo đồng hồ số hoặc tên chương trình của VTV.</h1>
+        <div class="controls">
+            <div id="numberinput">
+              <md-outlined-text-field id="hour1" style="width: 10%; text-align: center;" label="Hour1" value="1" maxlength="1">
+              </md-outlined-text-field>
+              <md-outlined-text-field id="hour2" style="width: 10%; text-align: center;" label="Hour2" value="9" maxlength="1">
+              </md-outlined-text-field>
+              :
+              <md-outlined-text-field id="minute1" style="width: 10%; text-align: center;" label="Minute1" value="0" maxlength="1">
+              </md-outlined-text-field>
+              <md-outlined-text-field id="minute2" style="width: 10%; text-align: center;" label="Minute2" value="0" maxlength="1">
+              </md-outlined-text-field>
+            </div>
+        </div>
+        <div class="container">
+            <p id="hourd1" style="letter-spacing: 40px; color: white; text-shadow: 0px 0px 2px rgba(0,0,0,100); font-size: 530%;">1</p>
+            <p id="hourd2" style="letter-spacing: 40px; color: white; text-shadow: 0px 0px 2px rgba(0,0,0,100); font-size: 530%;">9</p>
+            <p id="divider" style="letter-spacing: 40px; color: white; text-shadow: 0px 0px 2px rgba(0,0,0,100); font-size: 650%;">:</p>
+            <p id="mind1" style="letter-spacing: 40px; color: white; text-shadow: 0px 0px 2px rgba(0,0,0,100); font-size: 530%;">0</p>
+            <p id="mind2" style="letter-spacing: 40px; color: white; text-shadow: 0px 0px 2px rgba(0,0,0,100); font-size: 530%;">0</p>
+        </div>
+        <md-outlined-button onclick="downloadImage()">Tải về</md-outlined-button>
+        <br><br>
+        <div class="controls">
+            <div id="numberinput">
+              <md-outlined-text-field id="text1" label="Dòng 1" value="PROGRAMME">
+              </md-outlined-text-field>
+              <br><br>
+              <md-outlined-text-field id="text2" label="Dòng 2" value="PROGRAMME DESCRIPTION">
+              </md-outlined-text-field>
+            </div>
+        </div>
+        <div id="progname">
+          <p class="prog">
+            PROGRAMME
+            <br>
+            PROGRAMME DESCRIPTION
+          </p>
+        </div>
+        <div class="md-actions">
+          <md-filled-button onclick="downloadProg()">Tải về</md-filled-button>
+        </div>
+        <br><br><br>
+      </mdui-layout-main>
+    </mdui-layout>
+    <mdui-navigation-bar value="recent" label-visibility="true">
+      <mdui-navigation-bar-item href="index.html" icon="home--filled" value="recent">Trang chủ</mdui-navigation-bar-item>
+      <mdui-navigation-bar-item href="guide.html" icon="info--filled" value="images">Giới thiệu</mdui-navigation-bar-item>
+      <mdui-navigation-bar-item href="changelog.html" icon="info--filled" value="changelog">Changelog</mdui-navigation-bar-item>
+      <mdui-navigation-bar-item href="saved.html" icon="bookmark--filled" value="library">Đã lưu</mdui-navigation-bar-item>
+    </mdui-navigation-bar>
+    <script>
+      // Function to capture and download the #progname div
+      function downloadProg() {
+        // Get the #progname div
+        const progDiv = document.getElementById('progname');
+
+        // Set the background color to null
+        progDiv.style.background = 'none';
+
+        // Use html2canvas to capture the div
+        html2canvas(progDiv, {
+          useCORS: true,
+          logging: true,
+          scale: 2, // adjust the scale to match the font size
+          backgroundColor: null, // Add this line
+        }).then(canvas => {
+          // Get the canvas data URL
+          const dataURL = canvas.toDataURL();
+
+          // Create a link to download the image
+          const downloadLink = document.createElement('a');
+          downloadLink.href = dataURL;
+          downloadLink.download = 'programme.png';
+          downloadLink.click();
+        });
+      }
+
+      // Assign the function to the md-filled-button
+      document.addEventListener('DOMContentLoaded', () => {
+        const downloadButton = document.querySelector('.md-actions md-filled-button');
+        downloadButton.addEventListener('click', downloadProg);
+      });
+    </script>
+    <style>
+      .container {
+        position: relative;
+        width: 420px;
+        height: 200px;
+        align-items: center;
+        background-color: transparent; /* Add this line */
+      }
+
+      .text-container { /* Add this */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        letter-spacing: 40px; /* Apply letter spacing here */
+        text-align: center; /* Add this to center the text horizontally */
+      }
+
+      .prog {
+        line-height: 1.1; /* Reduced line spacing */
+        letter-spacing: 0.5px;
+        font-size: 105%;
+        color: #ffffff;
+        text-shadow: 0px 0px 1px rgba(0,0,0,0.71);
+      }
+    </style>
+    <script>
+      const hour1Input = document.getElementById('hour1');
+      const hour2Input = document.getElementById('hour2');
+      const minute1Input = document.getElementById('minute1');
+      const minute2Input = document.getElementById('minute2');
+
+      const hourd1Element = document.getElementById('hourd1');
+      const hourd2Element = document.getElementById('hourd2');
+      const mind1Element = document.getElementById('mind1');
+      const mind2Element = document.getElementById('mind2');
+
+      hour1Input.addEventListener('input', () => {
+        hourd1Element.textContent = hour1Input.value;
+      });
+
+      hour2Input.addEventListener('input', () => {
+        hourd2Element.textContent = hour2Input.value;
+      });
+
+      minute1Input.addEventListener('input', () => {
+        mind1Element.textContent = minute1Input.value;
+      });
+
+      minute2Input.addEventListener('input', () => {
+        mind2Element.textContent = minute2Input.value;
+      });
+    </script>
+    <script>
+      const progElement = document.querySelector('.prog');
+      const text1Element = document.getElementById('text1');
+      const text2Element = document.getElementById('text2');
+
+      text1Element.addEventListener('input', () => {
+        progElement.innerHTML = '';
+        const text1Value = document.createTextNode(text1Element.value);
+        progElement.appendChild(text1Value);
+        const brElement = document.createElement('br');
+        progElement.appendChild(brElement);
+        const text2Value = document.createTextNode(text2Element.value);
+        progElement.appendChild(text2Value);
+      });
+
+      text2Element.addEventListener('input', () => {
+        const textNodes = progElement.childNodes;
+        if (textNodes.length > 1) {
+          textNodes[2].nodeValue = text2Element.value;
+        }
+      });
+    </script>
+    <script>
+      // Get the container and download button elements
+      const container = document.querySelector('.container');
+      const downloadButton = document.querySelector('md-outlined-button');
+
+      // Define the downloadImage function
+      function downloadImage() {
+        console.log('downloadImage function called!');
+        // Use html2canvas to render the container as a canvas element
+        html2canvas(container, {
+          useCORS: true,
+          logging: true,
+          scale: 2, // adjust the scale to match the font size
+          backgroundColor: null, // Add this line
+        }).then(canvas => {
+          console.log('html2canvas rendered successfully!');
+          // Create a new link element to trigger the download
+          const link = document.createElement('a');
+          link.download = 'image.png';
+          link.href = canvas.toDataURL();
+          link.click();
+          console.log('Download link created and clicked!');
+        }).catch(error => {
+          console.error('Error rendering html2canvas:', error);
+        });
+      }
+
+      // Add an event listener to the download button
+      downloadButton.addEventListener('click', downloadImage);
+
+      // Check if the download button is null
+      if (!downloadButton) {
+        console.error('Download button not found!');
+      }
+
+      // Check if the container is null
+      if (!container) {
+        console.error('Container not found!');
+      }
+    </script>
+</body>
+</html>

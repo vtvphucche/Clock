@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
+    <script src="https://unpkg.com/mdui@2/mdui.global.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+      {
+        "imports": {
+          "@material/web/": "https://esm.run/@material/web/"
+        }
+      }
+    </script>
+    <script type="module">
+      import '@material/web/all.js';
+      import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+  
+      document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+    </script>
+    <title>TV Visual Generator</title>
+    <meta name="description" content="Our first page">
+    <meta name="keywords" content="html tutorial template">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @font-face {
+              font-family: 'Google Sans';
+              font-style: normal;
+              font-weight: 400;
+              font-display: swap;
+              src: url(/fonts/regular.woff2) format('woff2');
+              unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD
+        }
+
+        @font-face { font-family: MyriadPro; src: url('font/Myriad.otf'); } 
+        .displaytime {
+           font-family: MyriadPro;
+        }
+
+        @font-face { font-family: UTMHelve; src: url('font/UTM HelveBold.ttf'); } 
+        .prog {
+           font-family: UTMHelve;
+        }
+
+        * {
+          font-family: Google Sans;
+        }
+    </style>
+</head>
+
+<body>
+  <div>
+    <br><br>
+        <h1 class="md-typescale-body-large" style="font-size: 250%; line-height: 1.5;">Giới thiệu</h1>
+        <h1 class="md-typescale-body-large">Tạo đồng hồ VTV - một công cụ hỗ trợ designers và editors thiết kế đồng hồ cho riêng kênh VTV phục chế của họ.</h1>
+        <h1 class="md-typescale-body-large" style="font-size: 250%; line-height: 1.5;">Hiểu về đồng hồ và tên CT VTV</h1>
+        <h1 class="md-typescale-body-large">Đồng hồ và tên CT (tên chương trình VTV) là chỉ báo trực quan, tức là thông qua những thứ đó để người xem có thể biết được hiện tại là mấy giờ và đang trình chiếu chương trình gì</h1>
+        <h1 class="md-typescale-body-large" style="font-size: 250%; line-height: 1.5;">Chỉnh sửa tên CT và đồng hồ cho riêng mình để làm gì?</h1>
+        <h1 class="md-typescale-body-large">
+          Những ai phục chế các kênh không do Đài Truyền hình Việt Nam thực hiện sẽ cần ghép vào video của mình những thứ này để xem như là kênh VTV thực thụ
+          <br><br>
+          Ghi nhớ rằng đây chỉ là <b>dành cho mục đích phát triển video</b>, còn nếu dùng mà không có mục đích thì xin vui lòng bỏ qua ;)
+        </h1>
+        <h1 class="md-typescale-body-large"></h1>
+          Tạo bởi
+          <mdui-avatar src="color_fix.png"></mdui-avatar>
+          <a href="https://youtube.com/@vtvphụcchế" style="text-decoration: none;">VTV Phục chế </a>
+        </h1>
+  </div>
+    <mdui-navigation-bar value="images" label-visibility="true">
+      <mdui-navigation-bar-item href="index.html" icon="home--filled" value="recent">Trang chủ</mdui-navigation-bar-item>
+      <mdui-navigation-bar-item href="guide.html" icon="info--filled" value="images">Giới thiệu</mdui-navigation-bar-item>
+      <mdui-navigation-bar-item href="changelog.html" icon="info--filled" value="changelog">Changelog</mdui-navigation-bar-item>
+      <mdui-navigation-bar-item href="saved.html" icon="bookmark--filled" value="library">Đã lưu</mdui-navigation-bar-item>
+    </mdui-navigation-bar>
+</body>
+</html>

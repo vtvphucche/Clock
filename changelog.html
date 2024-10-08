@@ -44,7 +44,7 @@
 </head>
 
 <body>
-    <mdui-layout>
+    <mdui-layout style="background-color: #ffffff;">
       <mdui-top-app-bar class="example-top-app-bar">
         <mdui-top-app-bar-title>Tạo đồng hồ</mdui-top-app-bar-title>
       </mdui-top-app-bar>
@@ -55,23 +55,60 @@
         <mdui-navigation-rail-item href="changelog.html" icon="info--outlined" value="changelog">Changelog</mdui-navigation-rail-item>
         <mdui-navigation-rail-item href="saved.html" icon="bookmark--outlined" value="library">Đã lưu</mdui-navigation-rail-item>
       </mdui-navigation-rail>
-      <mdui-layout-main class="example-layout-main" style="min-height: 300px; margin-left: 30px;">
+      <mdui-layout-main class="example-layout-main" style="height: 895px; margin-left: 30px;">
         <h1 class="md-typescale-body-large" style="font-size: 250%;">Changelog</h1>
         <h1 class="md-typescale-body-large">Xem những bản cập nhật của trang web này</h1>
         <br>
-        <mdui-card variant="outlined" style="width: 90%; margin-top: 10px; margin-left: 20px; margin-bottom: 10px;">
-          <h1 class="md-typescale-body-large" style="margin-left: 20px; margin-top: 20px;">
-            <p style="font-size: 170%;"><b>02.10.2024</b></p>
-            
-            Trang web chính thức được thành lập.
-            Chào mừng bạn đến với công cụ tạo đồng hồ số VTV
-            <br>
-            <b>Tính năng</b>
-            <br>
-            •   Thêm đồng hồ VTV 2014
-            <br>
-            •   Thêm tính năng xuất hình ảnh đồng hồ VTV 2014
-          </h1>
+        <mdui-card variant="outlined" style="width: 90%; margin-top: 10px; margin-left: 20px; margin-bottom: 10px; background-color: transparent;">
+          <mdui-collapse accordion>
+            <mdui-collapse-item>
+              <mdui-list-item slot="header">
+                <b>V1.1 - 08.10.2024</b>
+              </mdui-list-item>
+              <div>
+                <mdui-list-item>
+                  Hi mọi người! Mình đã xuất bản thành công phiên bản 1.1 với nhiều thứ cần đáng chú ý
+                  <br>
+                  <b>Bổ sung</b>
+                  <br>
+                  •   Thêm đồng hồ VTV 2024
+                  <br>
+                  •   Thêm đồng hồ VTV7
+                  <br>
+                  •   Thêm tên chương trình VTV 2024
+                  <br>
+                  <b>Sửa lỗi</b>
+                  <br>
+                  •   Sửa lại giao diện trang web
+                </mdui-list-item>
+              </div>
+            </mdui-collapse-item>
+          </mdui-collapse>
+        </mdui-card>
+        <mdui-card variant="outlined" style="width: 90%; margin-top: 10px; margin-left: 20px; margin-bottom: 10px; background-color: transparent;">
+          <mdui-collapse accordion>
+            <mdui-collapse-item>
+              <mdui-list-item slot="header">
+                <b>V1.0 - 02.10.2024</b>
+              </mdui-list-item>
+              <div>
+                <mdui-list-item>
+                  Trang web chính thức được thành lập.
+                  Chào mừng bạn đến với công cụ tạo đồng hồ số VTV
+                  <br>
+                  <b>Tính năng</b>
+                  <br>
+                  •   Thêm đồng hồ VTV 2014
+                  <br>
+                  •   Thêm tính năng xuất hình ảnh đồng hồ VTV 2014
+                  <br>
+                  •   Thêm tên chương trình VTV6/VTV Cần Thơ
+                  <br>
+                  •   Thêm tính năng xuất hình ảnh tên CT
+                </mdui-list-item>
+              </div>
+            </mdui-collapse-item>
+          </mdui-collapse>
         </mdui-card>
         <h1 class="md-typescale-body-large">
           Tạo bởi

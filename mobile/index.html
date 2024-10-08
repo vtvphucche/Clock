@@ -43,6 +43,10 @@
            font-family: UTMHelve;
         }
 
+        .newprog {
+          font-family: UTMHelve;
+        }
+
         * {
           font-family: Google Sans;
         }
@@ -55,54 +59,227 @@
         <mdui-top-app-bar-title>Tạo đồng hồ</mdui-top-app-bar-title>
       </mdui-top-app-bar>
     
-      <mdui-layout-main class="example-layout-main" style="min-height: 300px; margin-left: 30px;">
-        <br><br>
-        <h1 class="md-typescale-body-large" style="font-size: 150%; line-height: 1.5;">Tạo bảng hiển thị đồng hồ và tên chương trình</h1>
-        <h1 class="md-typescale-body-large">Tại đây bạn có thể tạo đồng hồ số hoặc tên chương trình của VTV.</h1>
-        <div class="controls">
-            <div id="numberinput">
-              <md-outlined-text-field id="hour1" style="width: 10%; text-align: center;" label="Hour1" value="1" maxlength="1">
+      <mdui-layout style="background-color: #ffffff;">
+        <mdui-top-app-bar class="example-top-app-bar">
+          <mdui-top-app-bar-title>Tạo đồng hồ</mdui-top-app-bar-title>
+        </mdui-top-app-bar>
+      
+        <mdui-layout-main class="example-layout-main" style="height: 915px; margin-left: 30px; border-radius: 50px;">
+          <h1 class="md-typescale-body-large" style="font-size: 250%;">Tạo bảng hiển thị đồng hồ và tên chương trình</h1>
+          <h1 class="md-typescale-body-large">Tại đây bạn có thể tạo đồng hồ số hoặc tên chương trình của VTV.</h1>
+          <h2>Đồng hồ 2014-2024</h2>
+            <div class="clock2014">
+              <div class="controls">
+                  <div id="numberinput">
+                    <md-outlined-text-field id="hour1" style="width: 15%; text-align: center;" label="Hour1" value="0" maxlength="1">
+                    </md-outlined-text-field>
+                    <md-outlined-text-field id="hour2" style="width: 15%; text-align: center;" label="Hour2" value="0" maxlength="1">
+                    </md-outlined-text-field>
+                    :
+                    <md-outlined-text-field id="minute1" style="width: 15%; text-align: center;" label="Minute1" value="0" maxlength="1">
+                    </md-outlined-text-field>
+                    <md-outlined-text-field id="minute2" style="width: 15%; text-align: center;" label="Minute2" value="0" maxlength="1">
+                    </md-outlined-text-field>
+                  </div>
+              </div>
+              <br><br>
+              <div class="mptimer">
+                <img class="first-hour" src="myriad_assets/0.png" alt="0">
+                <img class="second-hour" src="myriad_assets/0.png" alt="6">
+                <img style="width: 30px;" src="myriad_assets/colon.png" alt=":">
+                <img class="first-minute" src="myriad_assets/0.png" alt="0">
+                <img class="second-minute" src="myriad_assets/0.png" alt="0">
+              </div>
+              <style>
+                .mptimer {
+                  display: inline-block;
+                  padding: 20px;
+                  background-color: #0000006b;
+                  opacity: 1;
+                  border-radius: 27px;
+                  position: relative;
+                  z-index: 2;
+                }
+      
+                .mptimer img {
+                  width: 60px; /* adjust the width to fit your image size */
+                  margin: 0 12px; /* add some space between images */
+                  vertical-align: middle;
+                  z-index: 3;
+                }
+  
+                .mptimer:before {
+                  content: "";
+                  display: inline-block;
+                  width: 15px; /* adjust the width of the empty space */
+                  height: 60px; /* adjust the height of the empty space */
+                  vertical-align: middle;
+                }
+  
+                .mptimer:after {
+                  content: "";
+                  display: inline-block;
+                  width: 15px; /* adjust the width of the empty space */
+                  height: 60px; /* adjust the height of the empty space */
+                  vertical-align: middle;
+                }
+              </style>
+              <br><br>
+              <md-outlined-button class="old-export">Tải về</md-outlined-button>
+            </div>
+            <h2>Đồng hồ 2024</h2>
+          <div class="tahoma" style="display: block;">
+            <div id="tahoma-number-input">
+              <md-outlined-text-field id="thour1" style="width: 5%; text-align: center;" type="number" label="Hour1" value="0" maxlength="1">
               </md-outlined-text-field>
-              <md-outlined-text-field id="hour2" style="width: 10%; text-align: center;" label="Hour2" value="9" maxlength="1">
+              <md-outlined-text-field id="thour2" style="width: 5%; text-align: center;" type="number" label="Hour2" value="0" maxlength="1">
               </md-outlined-text-field>
               :
-              <md-outlined-text-field id="minute1" style="width: 10%; text-align: center;" label="Minute1" value="0" maxlength="1">
+              <md-outlined-text-field id="tminute1" style="width: 5%; text-align: center;" type="number" label="Minute1" value="0" maxlength="1">
               </md-outlined-text-field>
-              <md-outlined-text-field id="minute2" style="width: 10%; text-align: center;" label="Minute2" value="0" maxlength="1">
-              </md-outlined-text-field>
-            </div>
-        </div>
-        <div class="container">
-            <p id="hourd1" style="letter-spacing: 40px; color: white; text-shadow: 0px 0px 2px rgba(0,0,0,100); font-size: 530%;">1</p>
-            <p id="hourd2" style="letter-spacing: 40px; color: white; text-shadow: 0px 0px 2px rgba(0,0,0,100); font-size: 530%;">9</p>
-            <p id="divider" style="letter-spacing: 40px; color: white; text-shadow: 0px 0px 2px rgba(0,0,0,100); font-size: 650%;">:</p>
-            <p id="mind1" style="letter-spacing: 40px; color: white; text-shadow: 0px 0px 2px rgba(0,0,0,100); font-size: 530%;">0</p>
-            <p id="mind2" style="letter-spacing: 40px; color: white; text-shadow: 0px 0px 2px rgba(0,0,0,100); font-size: 530%;">0</p>
-        </div>
-        <md-outlined-button onclick="downloadImage()">Tải về</md-outlined-button>
-        <br><br>
-        <div class="controls">
-            <div id="numberinput">
-              <md-outlined-text-field id="text1" label="Dòng 1" value="PROGRAMME">
-              </md-outlined-text-field>
-              <br><br>
-              <md-outlined-text-field id="text2" label="Dòng 2" value="PROGRAMME DESCRIPTION">
+              <md-outlined-text-field id="tminute2" style="width: 5%; text-align: center;" type="number" label="Minute2" value="0" maxlength="1">
               </md-outlined-text-field>
             </div>
-        </div>
-        <div id="progname">
-          <p class="prog">
-            PROGRAMME
+            <br><br>
+            <div class="timer">
+              <img class="th1" src="tahoma_assets/0.png" alt="0">
+              <img class="th2" src="tahoma_assets/0.png" alt="6">
+              <img style="width: 20px;" src="tahoma_assets/2-dot.png" alt=":">
+              <img class="tm1" src="tahoma_assets/0.png" alt="0">
+              <img class="tm2" src="tahoma_assets/0.png" alt="0">
+            </div>
+            <br><br>
+            <mdui-button class="new-export" variant="outlined">Tải về</mdui-button>
+            <style>
+              .tahoma {
+                background-color: transparent;
+              }
+    
+              .timer {
+                display: inline-block;
+                padding: 20px;
+                background-color: #00000086;
+                opacity: 1;
+                border-radius: 10px;
+                position: relative;
+              }
+    
+              .timer img {
+                width: 40px; /* adjust the width to fit your image size */
+                margin: 0 2px; /* add some space between images */
+                vertical-align: middle;
+              }
+            </style>
+          </div>
+          <h2>Đồng hồ VTV7</h2>
+          <div class="v7clock">
+            <div class="input-info">
+              <md-outlined-text-field class="input-data" label="Nhập thời gian" value="19 : 00">
+                <mdui-tooltip slot="trailing-icon" placement="right" content="Vui lòng chỉ thay thế phần số, còn phần : không được sửa đổi dưới bất kỳ hình thức nào">
+                  <mdui-button-icon icon="info--outlined"></mdui-button-icon>
+                </mdui-tooltip>
+              </md-outlined-text-field>
+            </div>
             <br>
-            PROGRAMME DESCRIPTION
-          </p>
-        </div>
-        <div class="md-actions">
-          <md-filled-button onclick="downloadProg()">Tải về</md-filled-button>
-        </div>
-        <br><br><br>
-      </mdui-layout-main>
-    </mdui-layout>
+            <div class="timev7">
+              19 : 00
+            </div>
+            <style>
+              .timev7 {
+                width: 195px;
+                height: 50px;
+                background-color: #333333a4;
+                color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 35px;
+                font-family: 'Times New Roman', Times, serif;
+              }
+            </style>
+            <br>
+            <mdui-button class="v7-export" variant="outlined">Tải về</mdui-button>
+          </div>
+          <br><br>
+          <div class="oldprg">
+            <div class="controls">
+                <div id="numberinput">
+                  <md-outlined-text-field id="text1" label="Dòng 1" value="PROGRAMME">
+                  </md-outlined-text-field>
+                  <br><br>
+                  <md-outlined-text-field id="text2" label="Dòng 2" value="PROGRAMME DESCRIPTION">
+                  </md-outlined-text-field>
+                </div>
+            </div>
+            <div id="progname">
+              <p class="prog">
+                PROGRAMME
+                <br>
+                PROGRAMME DESCRIPTION
+              </p>
+            </div>
+            <div class="md-actions">
+              <md-filled-button class="progdl">Tải về</md-filled-button>
+            </div>
+          </div>
+          <br>
+          <div class="newprg">
+            <div class="controls">
+              <div id="numberinput">
+                <md-outlined-text-field id="ntext1" label="Dòng 1" value="PROGRAMME">
+                </md-outlined-text-field>
+                <br><br>
+                <md-outlined-text-field id="ntext2" label="Dòng 2" value="PROGRAMME DESCRIPTION">
+                </md-outlined-text-field>
+              </div>
+          </div>
+          <div id="nprogname">
+            <p class="newprog">
+              PROGRAMME
+              <br>
+              PROGRAMME DESCRIPTION
+            </p>
+          </div>
+          <div class="md-actions">
+            <md-filled-button class="nprogdl">Tải về</md-filled-button>
+          </div>
+          </div>
+        </mdui-layout-main>
+      </mdui-layout>
+      <style>
+        .container {
+          position: relative;
+          width: 420px;
+          height: 200px;
+          align-items: center;
+          background-color: transparent; /* Add this line */
+        }
+  
+        .text-container { /* Add this */
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          letter-spacing: 40px; /* Apply letter spacing here */
+          text-align: center; /* Add this to center the text horizontally */
+        }
+  
+        .prog {
+          line-height: 1.1; /* Reduced line spacing */
+          letter-spacing: 0.5px;
+          font-size: 225%;
+          color: #ffffff;
+          text-shadow: 0px 0px 1px rgba(0,0,0,0.71);
+        }
+  
+        .newprog {
+          line-height: 1.1; /* Reduced line spacing */
+          letter-spacing: 0.25px;
+          font-size: 225%;
+          color: #ffffff;
+          text-shadow: 3px 3px 1px rgba(0,0,0,0.65);
+        }
+      </style>
     <mdui-navigation-bar value="recent" label-visibility="true">
       <mdui-navigation-bar-item href="index.html" icon="home--filled" value="recent">Trang chủ</mdui-navigation-bar-item>
       <mdui-navigation-bar-item href="guide.html" icon="info--filled" value="images">Giới thiệu</mdui-navigation-bar-item>

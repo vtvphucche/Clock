@@ -46,7 +46,14 @@
 <body>
     <mdui-layout style="background-color: #ffffff;">
       <mdui-top-app-bar class="example-top-app-bar">
-        <mdui-top-app-bar-title>Tạo đồng hồ</mdui-top-app-bar-title>
+        <mdui-top-app-bar-title style="vertical-align: middle;">
+          Tạo đồng hồ
+          <span style="font-size: 65%; border: solid 0.3px #565656; border-radius: 10px; cursor: pointer;" onclick="window.location.href = ('changelog.html')"> 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰v0.1.2 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝</span>
+          <span style="font-size: 65%; background-color: #e2d3ff; border-radius: 10px;"> 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰BETA 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝</span>
+        </mdui-top-app-bar-title>
+        <div style="flex-grow: 1; gap: 10px;"></div>
+        <md-filled-button href="bug_report.html">Báo cáo lỗi</md-filled-button>
+        <mdui-avatar src="Avatar.png"></mdui-avatar>
       </mdui-top-app-bar>
     
       <mdui-navigation-rail value="changelog" style="position: relative; width: 5%">
@@ -63,7 +70,33 @@
           <mdui-collapse accordion>
             <mdui-collapse-item>
               <mdui-list-item slot="header">
-                <b>V1.1 - 08.10.2024</b>
+                <b>V0.1.2 - 11.10.2024</b>
+              </mdui-list-item>
+              <div>
+                <mdui-list-item>
+                  Trong phiên bản này được chỉnh sửa lại một vài thứ để tránh lỗi và bổ sung thêm tính năng
+                  <br>
+                  <b>Bổ sung</b>
+                  <br>
+                  •   Thêm tính năng
+                  <a href="bug_report.html" style="text-decoration: none;"> Báo cáo lỗi</a>
+                  . Nếu bạn đang gặp phải vấn đề khi sử dụng, bạn có thể báo cáo lỗi thông qua tính năng này.
+                  <br>
+                  <b>Sửa lỗi</b>
+                  <br>
+                  •   Đã sửa lại tất cả đồng hồ VTV trong phiên bản Mobile
+                  <br>
+                  •   Đã sửa lỗi và cải thiện hiệu suất  của trang web
+                </mdui-list-item>
+              </div>
+            </mdui-collapse-item>
+          </mdui-collapse>
+        </mdui-card>
+        <mdui-card variant="outlined" style="width: 90%; margin-top: 10px; margin-left: 20px; margin-bottom: 10px; background-color: transparent;">
+          <mdui-collapse accordion>
+            <mdui-collapse-item>
+              <mdui-list-item slot="header">
+                <b>V0.1.1 - 08.10.2024</b>
               </mdui-list-item>
               <div>
                 <mdui-list-item>
@@ -89,7 +122,7 @@
           <mdui-collapse accordion>
             <mdui-collapse-item>
               <mdui-list-item slot="header">
-                <b>V1.0 - 02.10.2024</b>
+                <b>V0.1 - 02.10.2024</b>
               </mdui-list-item>
               <div>
                 <mdui-list-item>

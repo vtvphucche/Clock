@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+    <script src="https://unpkg.com/konva@9.3.15/konva.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
+    <script src="https://unpkg.com/mdui@2/mdui.global.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+      {
+        "imports": {
+          "@material/web/": "https://esm.run/@material/web/"
+        }
+      }
+    </script>
+    <script type="module">
+      import '@material/web/all.js';
+      import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+  
+      document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+    </script>
+    <title>TV Visual Generator</title>
+    <meta name="description" content="Our first page">
+    <meta name="keywords" content="html tutorial template">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @font-face {
+              font-family: 'Google Sans';
+              font-style: normal;
+              font-weight: 400;
+              font-display: swap;
+              src: url(/fonts/regular.woff2) format('woff2');
+              unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD
+        }
+
+        @font-face { font-family: MyriadPro; src: url('font/Myriad.otf'); } 
+        .displaytime {
+           font-family: MyriadPro;
+        }
+
+        @font-face { font-family: UTMHelve; src: url('font/UTM HelveBold.ttf'); } 
+        .prog {
+           font-family: UTMHelve;
+        }
+
+        .newprog {
+           font-family: UTMHelve;
+        }
+
+        * {
+          font-family: Google Sans;
+        }
+    </style>
+</head>
+
+<body>
+    <mdui-layout style="background-color: #ffffff;">
+    <mdui-top-app-bar>
+      <mdui-top-app-bar-title style="vertical-align: middle;">
+        Tạo đồng hồ
+        <span style="font-size: 65%; border: solid 0.3px #565656; border-radius: 10px; cursor: pointer;" onclick="window.location.href = ('changelog.html')"> 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰v1.1.1 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝</span>
+      </mdui-top-app-bar-title>
+      <div style="flex-grow: 1; gap: 10px;"></div>
+      <md-filled-button href="bug_report.html">Báo cáo lỗi</md-filled-button>
+      <mdui-avatar src="Avatar.png"></mdui-avatar>
+    </mdui-top-app-bar>
+    
+    <mdui-navigation-drawer open class="example-navigation-drawer">
+      <md-list>
+        <md-list-item href="index.html" style="border-radius: 30px;">
+          Tạo đồng hồ
+          <mdui-icon slot="start" name="access_time--outlined"></mdui-icon>
+          <md-ripple></md-ripple>
+        </md-list-item>
+        <md-list-item href="bug_report.html" style="border-radius: 30px;">
+          Báo cáo lỗi
+          <mdui-icon slot="start" name="bug_report--outlined"></mdui-icon>
+          <md-ripple></md-ripple>
+        </md-list-item>
+        <md-list-item href="https://youtube.com/@vtvphụcchế" style="border-radius: 30px;">
+          Youtube
+          <img slot="start" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" width="26px">
+          <md-ripple></md-ripple>
+        </md-list-item>
+        <mdui-list>
+          <mdui-collapse accordion>
+            <mdui-collapse-item>
+              <mdui-list-item slot="header" icon="calendar_month--outlined" end-icon="keyboard_arrow_down">Changelog</mdui-list-item>
+              <div style="margin-left: 2.5rem">
+                <mdui-list-item href="changelog.html">V1.1.1 - 10/10</mdui-list-item>
+                <mdui-list-item href="changelog.html">V1.1 - 08/10</mdui-list-item>
+                <mdui-list-item href="changelog.html">V1.0 - 02/10</mdui-list-item>
+              </div>
+            </mdui-collapse-item>
+          </mdui-collapse>
+        </mdui-list>
+      </md-list>
+    </mdui-navigation-drawer>
+
+      <mdui-layout-main class="example-layout-main" style="height: 895px; margin-left: 30px; border-radius: 50px;">
+        <br>
+        <h1 style="text-align: center;">Tạo đồng hồ số dành riêng cho kênh của bạn</h1>
+        <p style="text-align: center; font-family: Google Sans;">Tạo đồng hồ VTV - một công cụ hỗ trợ designers và editors thiết kế đồng hồ cho riêng kênh VTV phục chế của họ.</p>
+        <iframe style="width: 99%; height: 50%; border: none; pointer-events: none; user-select: none;" src="index.html"></iframe>
+        <br>
+        <h2 style="font-family: Google Sans;">Hiểu về đồng hồ và tên CT VTV</h2>
+        <p style="font-family: Google Sans;">Đồng hồ và tên CT (tên chương trình VTV) là chỉ báo trực quan, tức là thông qua những thứ đó để người xem có thể biết được hiện tại là mấy giờ và đang trình chiếu chương trình gì</p>
+        <p style="font-family: Google Sans;">Ví dụ về một video phục chế:</p>
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/R9fxOlIqzFg" title="VTV6 | Đổi đồng hồ số mới 02h19 1/8/2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <md-divider></md-divider>
+        <h1 style="text-align: center;">Creator</h1>
+        <p style="text-align: center; font-family: Google Sans;">
+          Bộ tool này được phát triển bởi
+          <a href="https://youtube.com/@vtvphụcchế" style="text-decoration: none;">VTV Phục chế</a>
+          . Mình phục chế các kênh
+          <img src="vtv6_logo.png" alt="VTV6" style="width: 50px; height: auto; vertical-align: middle;" />
+          (die) và
+          <img src="vtv10_logo.png" alt="VTV10" style="width: 60px; height: auto; vertical-align: middle;" />
+          <br><br>
+          <md-filled-tonal-button style="--md-sys-color-secondary-container: #ffc9c9; --md-sys-color-on-secondary-container: #ff0000" href="https://youtube.com/@vtvphụcchế">Đăng ký kênh</md-filled-tonal-button>
+        </p>
+        <md-divider></md-divider>
+        <h1 style="text-align: center;">Bắt đầu tạo đồng hồ số cho riêng mình</h1>
+        <p style="text-align: center; font-family: Google Sans;">
+          Nhấn vào đây để được chuyển hướng sang
+          <br><br>
+          <md-filled-tonal-button href="index.html">Bắt đầu</md-filled-tonal-button>
+        </p>
+      </mdui-layout-main>
+    </mdui-layout>
+</body>
+</html>

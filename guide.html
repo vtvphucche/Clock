@@ -45,8 +45,15 @@
 
 <body>
     <mdui-layout style="background-color: #ffffff;">
-      <mdui-top-app-bar class="example-top-app-bar">
-        <mdui-top-app-bar-title>Tạo đồng hồ</mdui-top-app-bar-title>
+      <mdui-top-app-bar>
+        <mdui-top-app-bar-title style="vertical-align: middle;">
+          Tạo đồng hồ
+          <span style="font-size: 65%; border: solid 0.3px #565656; border-radius: 10px; cursor: pointer;" onclick="window.location.href = ('changelog.html')"> 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰v0.1.2 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝</span>
+          <span style="font-size: 65%; background-color: #e2d3ff; border-radius: 10px;"> 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰BETA 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝</span>
+        </mdui-top-app-bar-title>
+        <div style="flex-grow: 1; gap: 10px;"></div>
+        <md-filled-button href="bug_report.html">Báo cáo lỗi</md-filled-button>
+        <mdui-avatar src="Avatar.png"></mdui-avatar>
       </mdui-top-app-bar>
     
       <mdui-navigation-rail value="images" style="position: relative; width: 5%">
@@ -69,6 +76,45 @@
           Ghi nhớ rằng đây chỉ là <b>dành cho mục đích phát triển video</b>, còn nếu dùng mà không có mục đích thì xin vui lòng bỏ qua ;)
         </h1>
         <br>
+        <br>
+        <md-divider></md-divider>
+        <br>
+        <h1 style="text-align: center;">Cách sử dụng</h1>
+        <span>Nếu bạn chỉ tạo video trong khoảng thời gian 3-5 phút, bạn có thể làm đồng hồ theo từng phút. Sau đó ghép vào video của bạn từng phút theo thời lượng.</span>
+        <img src="guide1.png" style="text-align: center;" width="50%" />
+        <h1 style="text-align: center;">Đối với đồng hồ LIVE (sử dụng đồng hồ tự động)</h1>
+        <span>1. Tải file PowerPoint về, bấm nút dưới đây để tải</span>
+        <br><br>
+        <mdui-button onclick="downloadFile('MacroGuide.pptm')">
+          Bấm vào đây để tải
+          <mdui-icon slot="icon" name="download--outlined"></mdui-icon>
+        </mdui-button>
+        <script>
+          function downloadFile(url) {
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = url.split('/').pop(); // set the filename from the URL
+            a.click();
+          }
+        </script>
+        <br><br>
+        <span>
+          2. Bạn cần cài đặt bộ font 
+          <a href="https://fontviethoa.vn/font-viet-hoa-utm-helve/">UTM Helve</a>
+          để không bị lỗi tên chương trình, và cài đặt thêm font sau: (đây là font đồng hồ số, nó chỉ hiển thị số bình thường, còn chữ sẽ ko bình thường được)
+          <br><br>
+          <mdui-button onclick="downloadFile('font/Myriad.otf')">
+            Bấm vào đây để tải
+            <mdui-icon slot="icon" name="download--outlined"></mdui-icon>
+          </mdui-button>
+        </span>
+        <br><br>
+        <span>3. Mở file PowerPoint, bạn có thể tự ý thay đổi logo theo Slide 2 trước khi đến bước 4.</span>
+        <br><br>
+        <span>4. Vào phần <b>View</b>, chọn <b>Macro</b>. Bạn sẽ thấy có 3 macro, bấm <b>StartLiveTime</b> và bấm <b>Chạy</b>. Bạn nên bấm cùng lúc đồng hồ hệ thống của bạn chuyển sang phút tiếp theo.</span>
+        <br><br>
+        <span>5. Bấm vào chế độ Trình chiếu, vậy là xong. Nếu bạn muốn thêm video, kéo thả video của bạn vào trong  trình chiếu rồi để ra đằng sau cùng.</span>
+        <br><br>
         <h1 class="md-typescale-body-large">
           Tạo bởi
           <mdui-avatar src="color_fix.png"></mdui-avatar>

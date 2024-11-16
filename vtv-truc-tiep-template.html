@@ -1,0 +1,817 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+    <script src="https://unpkg.com/konva@9.3.15/konva.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
+    <script src="https://unpkg.com/mdui@2/mdui.global.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+      {
+        "imports": {
+          "@material/web/": "https://esm.run/@material/web/"
+        }
+      }
+    </script>
+    <script type="module">
+      import '@material/web/all.js';
+      import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+  
+      document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+    </script>
+    <title>TV Visual Generator</title>
+    <meta name="description" content="Our first page">
+    <meta name="keywords" content="html tutorial template">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @font-face {
+              font-family: 'Google Sans';
+              font-style: normal;
+              font-weight: 400;
+              font-display: swap;
+              src: url(/fonts/regular.woff2) format('woff2');
+              unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD
+        }
+
+        @font-face { font-family: MyriadPro; src: url('font/Myriad.otf'); } 
+        .displaytime {
+           font-family: MyriadPro;
+        }
+
+        @font-face { font-family: UTMHelve; src: url('font/UTM HelveBold.ttf'); } 
+        .prog,.progten,.progv6 {
+           font-family: UTMHelve;
+        }
+
+        .newprog {
+           font-family: UTMHelve;
+        }
+
+        * {
+          font-family: Google Sans;
+        }
+    </style>
+</head>
+
+<body style="background-color: #000000;">
+  <mdui-layout>
+    <mdui-layout-main class="example-layout-main">
+      <style>
+        body {
+          background-color: #808080; 
+        }
+        .logo,.v6logo {
+          position: absolute;
+          top: 86px;
+          left: 155px;
+          width: 9%;
+        }
+
+        .right-logo {
+          position: absolute;
+          top: 86px;
+          left: 1625px;
+          width: 9%;
+        }
+
+        .v10logo {
+          position: absolute;
+          top: 95px;
+          left: 155px;
+          width: 9%;
+        }
+
+        .prog {
+          position: absolute;
+          top: 80px;
+          left: 349px;
+          color: #ffffff;
+          line-height: 1.2;
+          font-size: 180%;
+          text-shadow: 0px 0px 1.25px rgba(0,0,0,2);
+          transform: scaleY(0.85);
+        }
+
+        .progten {
+          position: absolute;
+          top: 85px;
+          left: 355px;
+          color: #ffffff;
+          line-height: 1.2;
+          font-size: 180%;
+          text-shadow: 0px 0px 1.25px rgba(0,0,0,2);
+          transform: scaleY(0.85);
+          letter-spacing: 0.5px;
+        }
+
+        .progv6 {
+          position: absolute;
+          top: 78px;
+          left: 355px;
+          color: #eeeeee;
+          line-height: 1.2;
+          font-size: 180%;
+          text-shadow: 0px 0px 1.25px rgba(0,0,0,2);
+          transform: scaleY(1);
+          letter-spacing: 0.5px;
+        }
+        </style>
+        <video loop id="background-video" style="display: none;">
+          <source src="ts.mp4" type="video/mp4">
+        </video>
+        <div class="vtv10" style="display: none;">
+          <img class="v10logo" src="vtv10_logo.png" alt="VTV6 logo">
+          <div class="progten">
+            CẢ NHÀ CÙNG VUI
+            <br> 
+             
+          </div>
+          <div class="mptimer" style="background-color: #00000053;">
+            <img class="first-hour" src="Final/0.png" alt="0">
+            <img class="second-hour" src="Final/0.png" alt="0">
+            <img class="colon" style="width: 10px;" src="Final/colon.png" alt=":">
+            <img class="first-minute" src="Final/0.png" alt="0">
+            <img class="second-minute" src="Final/0.png" alt="0">
+          </div>
+          <style>
+            .mptimer {
+              display: inline-block;
+              padding: 0px 0px;
+              background-color: #00000060;
+              opacity: 1;
+              position: absolute;
+              bottom: 75px;
+              left: 292.5px;
+              transform: translateX(-50%);
+              border-radius: 9.5px;
+              z-index: 2;
+            }
+      
+            .mptimer img {
+              width: 22px; /* adjust the width to fit your image size */
+              margin: 0 3px; /* add some space between images */
+              vertical-align: middle;
+              z-index: 3;
+            }
+      
+            .mptimer:before {
+              content: "";
+              display: inline-block;
+              width: 12px; /* adjust the width of the empty space */
+              height: 41px; /* adjust the height of the empty space */
+              vertical-align: middle;
+            }
+      
+            .mptimer:after {
+              content: "";
+              display: inline-block;
+              width: 11px; /* adjust the width of the empty space */
+              height: 41px; /* adjust the height of the empty space */
+              vertical-align: middle;
+            }
+          </style>
+        </div>
+        <div class="vtv" style="display: none;">
+          <img class="logo" src="logos/vtv1.png">
+          <div class="prog">
+            CẢ NHÀ CÙNG VUI
+            <br> 
+             
+          </div>
+          <div class="mptimer" style="background-color: #00000057;">
+            <img class="first-hour" src="Final/0.png" alt="0">
+            <img class="second-hour" src="Final/0.png" alt="0">
+            <img class="colon" style="width: 10px;" src="Final/colon.png" alt=":">
+            <img class="first-minute" src="Final/0.png" alt="0">
+            <img class="second-minute" src="Final/0.png" alt="0">
+          </div>
+          <style>
+            .mptimer {
+              display: inline-block;
+              padding: 0px 0px;
+              background-color: #00000060;
+              opacity: 1;
+              position: absolute;
+              bottom: 75px;
+              left: 292.5px;
+              transform: translateX(-50%);
+              border-radius: 9.5px;
+              z-index: 2;
+            }
+      
+            .mptimer img {
+              width: 22px; /* adjust the width to fit your image size */
+              margin: 0 3px; /* add some space between images */
+              vertical-align: middle;
+              z-index: 3;
+              filter: drop-shadow(0px 0px 1px #00000030);
+            }
+      
+            .mptimer:before {
+              content: "";
+              display: inline-block;
+              width: 12px; /* adjust the width of the empty space */
+              height: 41px; /* adjust the height of the empty space */
+              vertical-align: middle;
+            }
+      
+            .mptimer:after {
+              content: "";
+              display: inline-block;
+              width: 11px; /* adjust the width of the empty space */
+              height: 41px; /* adjust the height of the empty space */
+              vertical-align: middle;
+            }
+          </style>
+        </div>
+        <div class="vtv6" style="display: block;">
+          <img class="v6logo" src="vtv6.webp">
+          <img class="right-logo" style="display: none;" src="vtv6_logo.png">
+          <p class="logo-text" style="display: none;">Trực tiếp</p>
+          <div class="progv6">
+             KHÁM PHÁ THẾ GIỚI
+            <br> 
+             NHỮNG CON TÀU HẠNG SANG - TẬP 1
+          </div>
+          <div class="mptimer" style="background-color: #00000045;">
+            <img class="first-hour" src="Final/0.png" alt="0">
+            <img class="second-hour" src="Final/0.png" alt="0">
+            <img class="colon" style="width: 10px;" src="Final/colon.png" alt=":">
+            <img class="first-minute" src="Final/0.png" alt="0">
+            <img class="second-minute" src="Final/0.png" alt="0">
+          </div>
+          <style>
+            .mptimer .first-hour {
+              filter: drop-shadow(0px 0px 1px #00000095);
+            }
+            .mptimer .second-hour {
+              filter: drop-shadow(0px 0px 1px #00000095);
+            }
+            .mptimer .first-minute {
+              filter: drop-shadow(0px 0px 1px #00000095);
+            }
+            .mptimer .second-minute {
+              filter: drop-shadow(0px 0px 1px #00000095);
+            }
+            
+            .logo-text {
+              position: absolute;
+              top: 125px;
+              left: 180px;
+              color: #eeeeee;
+              font-size: 30px;
+              font-family: UTMHelve;
+            }
+
+            .mptimer .colon {
+              margin-top: 5px;
+              filter: drop-shadow(0px 0px 1px #00000095);
+            }
+
+            .mptimer6 {
+              display: inline-block;
+              padding: 0px 0px;
+              background-color: #00000060;
+              opacity: 1;
+              position: absolute;
+              bottom: 75px;
+              left: 292.5px;
+              transform: translateX(-50%);
+              border-radius: 9.5px;
+              z-index: 2;
+            }
+      
+            .mptimer6 img {
+              width: 22px; /* adjust the width to fit your image size */
+              margin: 0 3px; /* add some space between images */
+              vertical-align: middle;
+              z-index: 3;
+              filter: drop-shadow(0px 0px 1px #00000095);
+            }
+
+            .mptimer6 .colon {
+              margin-top: 5px;
+            }
+      
+            .mptimer6:before {
+              content: "";
+              display: inline-block;
+              width: 12px; /* adjust the width of the empty space */
+              height: 41px; /* adjust the height of the empty space */
+              vertical-align: middle;
+            }
+      
+            .mptimer6:after {
+              content: "";
+              display: inline-block;
+              width: 11px; /* adjust the width of the empty space */
+              height: 41px; /* adjust the height of the empty space */
+              vertical-align: middle;
+            }
+          </style>
+        </div>
+    </mdui-layout-main>
+  </mdui-layout>
+  <div id="mydiv" style="width: 367px; height: 859px; top: 43px; left: 1468px;">
+    <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+    <div id="mydivheader">
+        <div id="md-actions">
+          <mdui-button-icon icon="close"></mdui-button-icon>
+        </div>
+    </div>  
+    <div id="content">
+      <div class="progname">
+        <md-outlined-text-field class="first" label="Tên CT 1" value="CẢ NHÀ CÙNG VUI">
+        </md-outlined-text-field>
+        <br><br>
+        <md-outlined-text-field class="second" label="Tên CT 2" value=" ">
+        </md-outlined-text-field>
+        <br><br>
+        <div class="clock-valuecontrol">
+          <md-outlined-text-field type="number" class="firstclock-value" label="Giờ" value="00" style="width: 100px;">
+          </md-outlined-text-field>
+          :
+          <md-outlined-text-field type="number" class="secondclock-value" label="Phút" value="00" style="width: 100px;">
+          </md-outlined-text-field>
+        </div>
+        <br><br>
+        <label style="color: #000000; display: flex; place-items: center; gap: 200px; ">
+          Tắt tên CT?
+          <md-checkbox class="prog-status" touch-target="wrapper"></md-checkbox>
+        </label>
+      </div>
+      <div class="clock-config">
+        <label style="color: #000000; display: flex; place-items: center; gap: 138px; ">
+          Tắt khung đồng hồ?
+          <md-checkbox class="clock-bg-status" touch-target="wrapper"></md-checkbox>
+        </label>
+      </div>
+      <label style="color: #000000; display: flex; place-items: center; gap: 186px; ">
+        Tắt đồng hồ?
+        <md-checkbox class="clock-status" touch-target="wrapper"></md-checkbox>
+      </label>
+      <label style="color: #000000; display: flex; place-items: center; gap: 154px; ">
+        Tắt chữ trực tiếp?
+        <md-checkbox class="live" touch-target="wrapper"></md-checkbox>
+      </label>
+      <label style="color: #000000; display: flex; place-items: center; gap: 214px; ">
+        Tắt logo?
+        <md-checkbox class="logo-status" touch-target="wrapper"></md-checkbox>
+      </label>
+      <md-filled-button id="startLive">Bắt đầu tự động</md-filled-button>
+      <input type="number" id="second" placeholder="start second (e.g xx:xx:15)" max="2">
+      <p>Chọn một kênh</p>
+      <label style="color: #000000; display: flex; place-items: center; gap: 15px">
+        <md-radio class="v1" name="vtv" value="v1"></md-radio>
+        VTV1
+      </label>
+      <br>
+      <label style="color: #000000; display: flex; place-items: center; gap: 15px">
+        <md-radio class="v6" name="vtv" value="v6" checked></md-radio>
+        VTV6
+      </label>
+      <br>
+      <label style="color: #000000; display: flex; place-items: center; gap: 15px">
+        <md-radio class="v10" name="vtv" value="v10" checked></md-radio>
+        VTV10
+      </label>
+      <br><br>
+      <md-filled-button style="--md-sys-color-primary: #0059ff; border-radius: 5px;">
+        Upload video background
+        <svg slot="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+          <path d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/>
+        </svg>
+      </md-filled-button>
+    </div>
+</div>
+  <style>
+    #background-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1; /* set z-index to -1 to place it behind all elements */
+    }
+
+    .example-layout-main {
+      background-image: url(testcard.png);
+      min-width: 1920px;
+      min-height: 1080px;
+      transform: scale(0.75); /* adjust the scale factor to fit your needs */
+      transform-origin: top left; /* set the origin of the scale transformation */
+    }
+
+    #mydiv {
+            position: absolute;
+            z-index: 9;
+            background-color: #dbe6ff;
+            box-shadow: 0px 3px 13px -6px rgba(0,0,0,1);
+            -webkit-box-shadow: 0px 3px 13px -6px rgba(0,0,0,1);
+            -moz-box-shadow: 0px 3px 13px -6px rgba(0,0,0,1);
+            text-align: center;
+            resize: both;
+            overflow: hidden;
+            border-radius: 10px;
+            /* From https://css.glass */
+            background: rgba(255, 255, 255, 0.671);
+            border-radius: 16px;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(17.5px);
+        }
+
+        #customize-div {
+            position: absolute;
+            z-index: 9;
+            background-color: #dbe6ff;
+            box-shadow: 0px 3px 13px -6px rgba(0,0,0,1);
+            -webkit-box-shadow: 0px 3px 13px -6px rgba(0,0,0,1);
+            -moz-box-shadow: 0px 3px 13px -6px rgba(0,0,0,1);
+            text-align: center;
+            overflow: hidden;
+            border-radius: 10px;
+            /* From https://css.glass */
+            background: rgba(52, 60, 79, 0.838);
+            border-radius: 16px;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(17.5px);
+        }
+
+
+        #md-header {
+            text-align: left;
+            margin-left: 15px;
+            margin-right: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #md-button-actions {
+            text-align: right;
+        }
+
+        #content {
+            color: #ffffff;
+            text-align: left;
+            margin-left: 15px;
+            margin-right: 20px;
+            margin-bottom: 15px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        #mydivheader {
+            padding: 10px;
+            cursor: grab;
+            color: #000000;
+            border-radius: 10px 10px 0 0;
+            text-align: right;
+            /* From https://css.glass */
+        }
+
+        #mydivheader:active {
+            cursor: grabbing;
+        }
+  </style>
+  <script>
+    // Make the DIV element draggable:
+    dragElement(document.getElementById("mydiv"));
+
+    function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (document.getElementById(elmnt.id + "header")) {
+        // if present, the header is where you move the DIV from:
+        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+    } else {
+        // otherwise, move the DIV from anywhere inside the DIV:
+        elmnt.onmousedown = dragMouseDown;
+    }
+
+    function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // calculate the new cursor position:
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        // set the element's new position:
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+
+    function closeDragElement() {
+        // stop moving when mouse button is released:
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
+    }
+</script>
+<script>
+    const myDiv = document.getElementById('mydiv');
+
+    myDiv.addEventListener('mousedown', (e) => {
+    if (e.target.id === 'mydivheader') {
+        // enable dragging
+        myDiv.style.cursor = 'move';
+        document.addEventListener('mousemove', (e) => {
+        myDiv.style.top = `${e.clientY}px`;
+        myDiv.style.left = `${e.clientX}px`;
+        });
+        document.addEventListener('mouseup', () => {
+        myDiv.style.cursor = 'default';
+        });
+    }
+    });
+
+    myDiv.addEventListener('resize', (e) => {
+    // update iframe dimensions on resize
+    const iframe = myDiv.querySelector('iframe');
+    iframe.width = myDiv.offsetWidth;
+    iframe.height = myDiv.offsetHeight;
+    });
+</script>
+  <script>
+    // Get the elements
+    const prog = document.querySelector('.prog');
+    const progten = document.querySelector('.progten');
+    const progv6 = document.querySelector('.progv6');
+    const firstInput = document.querySelector('.first');
+    const secondInput = document.querySelector('.second');
+    const progStatusSwitch = document.querySelector('.prog-status');
+    const clockStatusSwitch = document.querySelector('.clock-status');
+    const clockBgStatusSwitch = document.querySelector('.clock-bg-status');
+    const mptimer = document.querySelectorAll('.mptimer');
+
+    // Function to update the text of the .prog, .progten, .progv6 elements
+    function updateProgText() {
+      const firstText = firstInput.value;
+      const secondText = secondInput.value;
+
+      prog.innerHTML = `${firstText}<br>${secondText}`;
+      progten.innerHTML = `${firstText}<br>${secondText}`;
+      progv6.innerHTML = `${firstText}<br>${secondText}`;
+    }
+
+    // Function to toggle the display of the .prog, .progten, .progv6 elements
+    function toggleProgDisplay() {
+      const isSelected = progStatusSwitch.checked;
+
+      if (isSelected) {
+        prog.style.transition = 'opacity 0.5s';
+        progten.style.transition = 'opacity 0.5s';
+        progv6.style.transition = 'opacity 0.5s';
+
+        setTimeout(() => {
+          prog.style.opacity = 0;
+          progten.style.opacity = 0;
+          progv6.style.opacity = 0;
+
+          setTimeout(() => {
+            prog.style.display = 'none';
+            progten.style.display = 'none';
+            progv6.style.display = 'none';
+          }, 500);
+        }, 0);
+      } else {
+        prog.style.display = 'block';
+        progten.style.display = 'block';
+        progv6.style.display = 'block';
+
+        setTimeout(() => {
+          prog.style.transition = 'opacity 0.5s';
+          progten.style.transition = 'opacity 0.5s';
+          progv6.style.transition = 'opacity 0.5s';
+
+          prog.style.opacity = 1;
+          progten.style.opacity = 1;
+          progv6.style.opacity = 1;
+        }, 0);
+      }
+    }
+
+    // Function to toggle the background color of the .mptimer elements
+    function toggleMptimerBg() {
+    const isSelected = clockBgStatusSwitch.checked;
+
+    mptimer.forEach((timer) => {
+      if (isSelected) {
+        timer.style.backgroundColor = 'transparent';
+      } else {
+        timer.style.backgroundColor = '#00000060';
+      }
+    });
+  }
+
+    // Function to toggle the display of the .mptimer elements
+    function toggleMptimerDisplay() {
+      const isSelected = clockStatusSwitch.checked;
+
+      mptimer.forEach((timer) => {
+        if (isSelected) {
+          timer.style.transition = 'opacity 0s';
+          prog.style.transition = 'opacity 0s';
+          progten.style.transition = 'opacity 0s';
+          progv6.style.transition = 'opacity 0s';
+
+          setTimeout(() => {
+            timer.style.opacity = 0;
+            prog.style.opacity = 0;
+            progten.style.opacity = 0;
+            progv6.style.opacity = 0;
+
+            setTimeout(() => {
+              timer.style.display = 'none';
+              prog.style.display = 'none';
+              progten.style.display = 'none';
+              progv6.style.display = 'none';
+            }, 500);
+          }, 0);
+        } else {
+          timer.style.display = 'block';
+          prog.style.display = 'block';
+          progten.style.display = 'block';
+          progv6.style.display = 'block';
+
+          setTimeout(() => {
+            timer.style.transition = 'opacity 0s';
+            prog.style.transition = 'opacity 0s';
+            progten.style.transition = 'opacity 0s';
+            progv6.style.transition = 'opacity 0s';
+
+            timer.style.opacity = 1;
+            prog.style.opacity = 1;
+            progten.style.opacity = 1;
+            progv6.style.opacity = 1;
+          }, 0);
+        }
+      });
+    }
+
+    // Add event listeners to the input fields and switches
+    firstInput.addEventListener('input', updateProgText);
+    secondInput.addEventListener('input', updateProgText);
+    progStatusSwitch.addEventListener('change', toggleProgDisplay);
+    clockStatusSwitch.addEventListener('change', toggleMptimerDisplay);
+    clockBgStatusSwitch.addEventListener('change', toggleMptimerBg);
+  </script>
+  <script>
+    const v1Radio = document.querySelector('.v1');
+    const v6Radio = document.querySelector('.v6');
+    const v10Radio = document.querySelector('.v10');
+    const vtv = document.querySelector('.vtv');
+    const vtv6 = document.querySelector('.vtv6');
+    const vtv10 = document.querySelector('.vtv10');
+
+    [v1Radio, v6Radio, v10Radio].forEach((radio) => {
+      radio.addEventListener('change', () => {
+        if (radio.checked) {
+          vtv.style.display = radio === v1Radio ? 'block' : 'none';
+          vtv6.style.display = radio === v6Radio ? 'block' : 'none';
+          vtv10.style.display = radio === v10Radio ? 'block' : 'none';
+        }
+      });
+    });
+  </script>
+  <script>
+    const liveCheckbox = document.querySelector('.live');
+    const logoText = document.querySelector('.logo-text');
+
+    // Function to toggle the display of the logo-text based on the live checkbox
+    function toggleLogoTextDisplay() {
+        if (liveCheckbox.checked) {
+            logoText.style.display = 'none'; // Hide logo-text when live is checked
+        } else {
+            logoText.style.display = 'block'; // Show logo-text when live is unchecked
+        }
+    }
+
+    // Add event listener to the live checkbox
+    liveCheckbox.addEventListener('change', toggleLogoTextDisplay);
+  </script>
+  <script>
+    const logoStatusSwitch = document.querySelector('.logo-status');
+    const v10Logo = document.querySelector('.v10logo');
+    const logo = document.querySelector('.logo');
+    const v6Logo = document.querySelector('.v6logo');
+
+    // Function to toggle the display of the logos based on the logo-status checkbox
+    function toggleLogoDisplay() {
+        if (logoStatusSwitch.checked) {
+            // Apply fade-out transition for v6logo
+            v6Logo.style.transition = 'opacity 0.5s';
+            v6Logo.style.opacity = 0;
+
+            // Wait for the transition to finish before setting display to none
+            setTimeout(() => {
+                v10Logo.style.display = 'none';
+                logo.style.display = 'none';
+                v6Logo.style.display = 'none';
+            }, 500); // Match this timeout to the duration of the fade-out
+        } else {
+            // Ensure logos are displayed and reset opacity for fade-in
+            v10Logo.style.display = 'block';
+            logo.style.display = 'block';
+            v6Logo.style.display = 'block';
+
+            // Set opacity to 0 initially for fade-in effect
+            v6Logo.style.opacity = 0; 
+
+            // Apply fade-in transition for v6logo
+            v6Logo.style.transition = 'opacity 0.9s';
+            // Trigger the fade-in by setting opacity to 1
+            setTimeout(() => {
+                v6Logo.style.opacity = 1; // Fade in v6logo
+            }, 10); // Small timeout to ensure the transition is applied
+        }
+    }
+
+    // Add event listener to the logo-status checkbox
+    logoStatusSwitch.addEventListener('change', toggleLogoDisplay);
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const firstClockValueInput = document.querySelector('.firstclock-value');
+        const secondClockValueInput = document.querySelector('.secondclock-value');
+        const firstHourImg = document.querySelector('.first-hour'); // First hour image
+        const secondHourImg = document.querySelector('.second-hour'); // Second hour image
+        const firstMinuteImg = document.querySelector('.first-minute'); // First minute image
+        const secondMinuteImg = document.querySelector('.second-minute'); // Second minute image
+        const startLiveButton = document.querySelector('#startLive'); // Ensure this ID matches your button
+
+        // Function to update the clock images based on the values from the input fields
+        function updateClockImages() {
+            const firstClockValue = firstClockValueInput.value.padStart(2, '0'); // Ensure it's 2 digits
+            const secondClockValue = secondClockValueInput.value.padStart(2, '0'); // Ensure it's 2 digits
+
+            // Update the image sources based on the digits
+            firstHourImg.src = `Final/${firstClockValue[0]}.png`; // First digit of firstclock-value
+            secondHourImg.src = `Final/${firstClockValue[1]}.png`; // Second digit of firstclock-value
+            firstMinuteImg.src = `Final/${secondClockValue[0]}.png`; // First digit of secondclock-value
+            secondMinuteImg.src = `Final/${secondClockValue[1]}.png`; // Second digit of secondclock-value
+        }
+
+        // Function to start the timer
+        function startTimer() {
+            // Get the initial values from the input fields
+            let seconds = parseInt(secondClockValueInput.value, 10);
+            let firstClockValue = parseInt(firstClockValueInput.value, 10);
+
+            // Update the clock images initially
+            updateClockImages();
+
+            // Set an interval to update the clock every second
+            const interval = setInterval(() => {
+                // Decrease seconds
+                seconds--;
+
+                // If seconds reach -1, reset to 59 and decrease the first clock value
+                if (seconds < 0) {
+                    seconds = 59;
+                    firstClockValue--;
+
+                    // If first clock value reaches -1, stop the timer
+                    if (firstClockValue < 0) {
+                        clearInterval(interval);
+                        return;
+                    }
+                }
+
+                // Update the clock images based on the new values
+                firstClockValueInput.value = firstClockValue;
+                secondClockValueInput.value = seconds;
+                updateClockImages();
+            }, 1000); // Update every second
+        }
+
+        // Event listener for the startLive button
+        startLiveButton.addEventListener('click', startTimer);
+        
+        // Add event listeners to input fields to update images on input change
+        firstClockValueInput.addEventListener('input', updateClockImages);
+        secondClockValueInput.addEventListener('input', updateClockImages);
+    });
+  </script>
+</body>
+</html>

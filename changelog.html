@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+  <link rel="icon" type="image/x-icon" href="logo.png">
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
     <script src="https://unpkg.com/mdui@2/mdui.global.js"></script>
@@ -37,35 +38,81 @@
            font-family: MyriadPro;
         }
 
-        * {
+        body, p, h1, h2, h3, span, mdui-top-app-bar-title {
           font-family: Google Sans;
+        }
+
+        [icon], [name], [end-icon], md-icon, mdui-icon {
+          font-family: Material Symbols Outlined;
         }
     </style>
 </head>
 
 <body>
+    <mdui-snackbar placement="top-end" open>
+      <md-icon slot="close-button">verified</md-icon>
+      Bạn đang sử dụng phiên bản mới nhất của Tool.
+    </mdui-snackbar>
     <mdui-layout style="background-color: #ffffff;">
       <mdui-top-app-bar class="example-top-app-bar">
+        <mdui-button-icon id="openBar" icon="menu"></mdui-button-icon>
+        <mdui-button-icon id="closeBar" icon="menu_open--outlined" style="display: none;"></mdui-button-icon>
         <mdui-top-app-bar-title style="vertical-align: middle;">
           Tạo đồng hồ
-          <span style="font-size: 65%; border: solid 0.3px #565656; border-radius: 10px; cursor: pointer;" onclick="window.location.href = ('changelog.html')"> 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰v0.1.2 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝</span>
-          <span style="font-size: 65%; background-color: #e2d3ff; border-radius: 10px;"> 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰BETA 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝 󠁛󠀣󠀰󠀰󠀰󠀰󠀰󠀰󠀬󠀣󠀹󠀲󠀹󠀲󠀹󠀲󠁝</span>
+          <span style="font-size: 65%; border: solid 0.3px #565656; border-radius: 10px; cursor: pointer;" onclick="window.location.href = ('changelog.html')">
+            <span style="margin-left: 5px; margin-right: 5px;">v0.1.3</span>
+          </span>
+          <span style="font-size: 65%; background-color: #e2d3ff; border-radius: 10px; cursor: default; margin-left: 5px;">
+            <span style="margin-left: 5px; margin-right: 5px;">BETA</span>
+          </span>
         </mdui-top-app-bar-title>
         <div style="flex-grow: 1; gap: 10px;"></div>
         <md-filled-button href="bug_report.html">Báo cáo lỗi</md-filled-button>
         <mdui-avatar src="Avatar.png"></mdui-avatar>
       </mdui-top-app-bar>
     
-      <mdui-navigation-rail value="changelog" style="position: relative; width: 5%">
-        <mdui-navigation-rail-item href="index.html" icon="home--outlined" value="recent">Trang chủ</mdui-navigation-rail-item>
-        <mdui-navigation-rail-item href="guide.html" icon="info--outlined" value="images">Giới thiệu</mdui-navigation-rail-item>
-        <mdui-navigation-rail-item href="changelog.html" icon="info--outlined" value="changelog">Changelog</mdui-navigation-rail-item>
-        <mdui-navigation-rail-item href="saved.html" icon="bookmark--outlined" value="library">Đã lưu</mdui-navigation-rail-item>
-      </mdui-navigation-rail>
+      <mdui-navigation-drawer close-on-esc close-on-overlay-click open class="drawer">
+        <mdui-list>
+          <mdui-list-item rounded href="index.html">
+            <md-icon slot="icon">home</md-icon>
+            Home
+          </mdui-list-item>
+          <mdui-list-item rounded active href="changelog.html">
+            <md-icon slot="icon">schedule</md-icon>
+            Nhật ký sửa đổi
+          </mdui-list-item>
+          <mdui-list-item rounded href="guide.html">
+            <md-icon slot="icon">info</md-icon>
+            Giới thiệu
+          </mdui-list-item>
+          <mdui-list-item rounded href="experiment.html">
+            <md-icon slot="icon">experiment</md-icon>
+            Test lab
+          </mdui-list-item>
+        </mdui-list>
+      </mdui-navigation-drawer>
       <mdui-layout-main class="example-layout-main" style="height: 895px; margin-left: 30px;">
         <h1 class="md-typescale-body-large" style="font-size: 250%;">Changelog</h1>
         <h1 class="md-typescale-body-large">Xem những bản cập nhật của trang web này</h1>
         <br>
+        <mdui-card variant="outlined" style="width: 90%; margin-top: 10px; margin-left: 20px; margin-bottom: 10px; background-color: transparent;">
+          <mdui-collapse accordion>
+            <mdui-collapse-item>
+              <mdui-list-item slot="header">
+                <b>V0.1.3 - 12.11.2024</b>
+              </mdui-list-item>
+              <div>
+                <mdui-list-item>
+                  <b>Sửa lỗi</b>
+                  <br>
+                  •   Đã sửa lại tất cả tên CT VTV
+                  <br>
+                  •   Đã sửa lỗi và cải thiện hiệu suất  của trang web
+                </mdui-list-item>
+              </div>
+            </mdui-collapse-item>
+          </mdui-collapse>
+        </mdui-card>
         <mdui-card variant="outlined" style="width: 90%; margin-top: 10px; margin-left: 20px; margin-bottom: 10px; background-color: transparent;">
           <mdui-collapse accordion>
             <mdui-collapse-item>
@@ -150,5 +197,29 @@
         </h1>
       </mdui-layout-main>
     </mdui-layout>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const openButton = document.getElementById('openBar');
+        const closeButton = document.getElementById('closeBar');
+        const drawer = document.querySelector('.drawer');
+
+        if (openButton && closeButton && drawer) {
+          openButton.addEventListener("click", () => {
+            openButton.style.display = 'none';
+            closeButton.style.display = 'block';
+            drawer.open = true; // Set the drawer to open
+          });
+
+          closeButton.addEventListener("click", () => {
+            closeButton.style.display = 'none';
+            openButton.style.display = 'block';
+            drawer.open = false; // Set the drawer to close
+          });
+        } else {
+          console.error('One or more elements not found');
+        }
+      });
+    </script>
 </body>
 </html>

@@ -47,18 +47,22 @@
            font-family: UTMHelve;
         }
 
-        * {
+        body, p, h1, h2, h3, span, mdui-top-app-bar-title {
           font-family: Google Sans;
+        }
+
+        [icon], [name], [end-icon], md-icon, mdui-icon {
+          font-family: Material Symbols Outlined;
         }
     </style>
 </head>
 
-<body style="background-color: #ffffff;">
+<body>
     <h1 class="md-typescale-body-large" style="font-size: 250%;">Editor</h1>
     <h1 class="md-typescale-body-large">Tại đây bạn có thể tạo đồng hồ số hoặc tên chương trình của VTV.</h1>
     <mdui-card variant="outlined" style="width: 98%;">
-      <mdui-collapse accordion>
-        <mdui-collapse-item>
+      <mdui-collapse accordion value="1">
+        <mdui-collapse-item value="1">
           <mdui-list-item slot="header" end-icon="keyboard_arrow_down">
             <h2>Đồng hồ 2014-2024</h2>
           </mdui-list-item>
@@ -79,17 +83,17 @@
             </div>
             <br><br>
             <div class="mptimer">
-              <img class="first-hour" src="myriad_assets/0.png" alt="0">
-              <img class="second-hour" src="myriad_assets/0.png" alt="6">
-              <img style="width: 30px;" src="myriad_assets/colon.png" alt=":">
-              <img class="first-minute" src="myriad_assets/0.png" alt="0">
-              <img class="second-minute" src="myriad_assets/0.png" alt="0">
+              <img class="first-hour" src="Final/0.png" alt="0">
+              <img class="second-hour" src="Final/0.png" alt="6">
+              <img style="width: 30px; margin-top: 10px;" src="Final/colon.png" alt=":">
+              <img class="first-minute" src="Final/0.png" alt="0">
+              <img class="second-minute" src="Final/0.png" alt="0">
             </div>
             <style>
               .mptimer {
                 display: inline-block;
                 padding: 20px;
-                background-color: #0000006b;
+                background-color: #0000006b; /* background color: #0000006b */
                 opacity: 1;
                 border-radius: 27px;
                 position: relative;
@@ -136,14 +140,14 @@
           <br>
           <div class="tahoma" style="display: block;margin-left: 20px;">
             <div id="tahoma-number-input">
-              <md-outlined-text-field id="thour1" style="width: 5%; text-align: center;" type="number" label="Hour1" value="0" maxlength="1">
+              <md-outlined-text-field id="thour1" style="width: 15%; text-align: center;" type="number" label="Hour1" value="0" maxlength="1">
               </md-outlined-text-field>
-              <md-outlined-text-field id="thour2" style="width: 5%; text-align: center;" type="number" label="Hour2" value="0" maxlength="1">
+              <md-outlined-text-field id="thour2" style="width: 15%; text-align: center;" type="number" label="Hour2" value="0" maxlength="1">
               </md-outlined-text-field>
               :
-              <md-outlined-text-field id="tminute1" style="width: 5%; text-align: center;" type="number" label="Minute1" value="0" maxlength="1">
+              <md-outlined-text-field id="tminute1" style="width: 15%; text-align: center;" type="number" label="Minute1" value="0" maxlength="1">
               </md-outlined-text-field>
-              <md-outlined-text-field id="tminute2" style="width: 5%; text-align: center;" type="number" label="Minute2" value="0" maxlength="1">
+              <md-outlined-text-field id="tminute2" style="width: 15%; text-align: center;" type="number" label="Minute2" value="0" maxlength="1">
               </md-outlined-text-field>
             </div>
             <br><br>
@@ -155,7 +159,7 @@
               <img class="tm2" src="tahoma_assets/0.png" alt="0">
             </div>
             <br><br>
-            <mdui-button class="new-export" variant="outlined">Tải về</mdui-button>
+            <mdui-button class="new-export" style="font-family: Roboto;" variant="outlined">Tải về</mdui-button>
             <br><br>
             <style>
               .tahoma {
@@ -308,7 +312,7 @@
         line-height: 1.1; /* Reduced line spacing */
         letter-spacing: 0.5px;
         font-size: 225%;
-        color: #ffffff;
+        color: #e6e6e6;
         text-shadow: 0px 0px 1px rgba(0,0,0,0.71);
       }
 
@@ -346,23 +350,29 @@
       const nprogElement = document.querySelector('.newprog');
       const ntext1Element = document.getElementById('ntext1');
       const ntext2Element = document.getElementById('ntext2');
-
-      ntext1Element.addEventListener('input', () => {
-        nprogElement.innerHTML = '';
-        const ntext1Value = document.createTextNode(ntext1Element.value);
+    
+      // Function to update the newprog content
+      function updateProg() {
+        nprogElement.innerHTML = ''; // Clear previous content
+    
+        // Create and append the first line with ntext1 value
+        const text1Value = document.createTextNode(ntext1Element.value);
         nprogElement.appendChild(text1Value);
+    
+        // Append a line break
         const brElement = document.createElement('br');
-        progElement.appendChild(brElement);
-        const text2Value = document.createTextNode(text2Element.value);
-        progElement.appendChild(text2Value);
-      });
-
-      text2Element.addEventListener('input', () => {
-        const textNodes = progElement.childNodes;
-        if (textNodes.length > 1) {
-          textNodes[2].nodeValue = text2Element.value;
-        }
-      });
+        nprogElement.appendChild(brElement);
+    
+        // Create and append the second line with ntext2 value
+        const text2Value = document.createTextNode(ntext2Element.value);
+        nprogElement.appendChild(text2Value);
+      }
+    
+      // Add event listener for ntext1 input
+      ntext1Element.addEventListener('input', updateProg);
+    
+      // Add event listener for ntext2 input
+      ntext2Element.addEventListener('input', updateProg);
     </script>
     <script>
       const hour1Input = document.getElementById('hour1');
@@ -377,22 +387,22 @@
     
       hour1Input.addEventListener('input', () => {
         const hour1Value = hour1Input.value;
-        firstHourImg.src = `myriad_assets/${hour1Value}.png`;
+        firstHourImg.src = `Final/${hour1Value}.png`;
       });
     
       hour2Input.addEventListener('input', () => {
         const hour2Value = hour2Input.value;
-        secondHourImg.src = `myriad_assets/${hour2Value}.png`;
+        secondHourImg.src = `Final/${hour2Value}.png`;
       });
     
       minute1Input.addEventListener('input', () => {
         const minute1Value = minute1Input.value;
-        firstMinuteImg.src = `myriad_assets/${minute1Value}.png`;
+        firstMinuteImg.src = `Final/${minute1Value}.png`;
       });
     
       minute2Input.addEventListener('input', () => {
         const minute2Value = minute2Input.value;
-        secondMinuteImg.src = `myriad_assets/${minute2Value}.png`;
+        secondMinuteImg.src = `Final/${minute2Value}.png`;
       });
     </script>
     <script>

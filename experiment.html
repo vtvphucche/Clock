@@ -79,7 +79,7 @@
     
     <mdui-navigation-drawer close-on-esc close-on-overlay-click open class="drawer">
       <mdui-list>
-        <mdui-list-item rounded active>
+        <mdui-list-item rounded href="index.html">
           <md-icon slot="icon">home</md-icon>
           Home
         </mdui-list-item>
@@ -91,7 +91,7 @@
           <md-icon slot="icon">info</md-icon>
           Giới thiệu
         </mdui-list-item>
-        <mdui-list-item rounded href="experiment.html">
+        <mdui-list-item rounded active>
           <md-icon slot="icon">experiment</md-icon>
           Test lab
         </mdui-list-item>
@@ -99,7 +99,14 @@
       
     </mdui-navigation-drawer>
       <mdui-layout-main class="example-layout-main" style="height: 100vh; margin-left: 30px; border-radius: 50px;">
-        <iframe src="editor.html" style="border: none; width: 100vh; height: 92vh;"></iframe>
+        <h1>Ứng dụng thử nghiệm</h1>
+        <p>Mình đang có tạo thêm một page mới cho bộ đồng hồ dạng LIVE, và nó đang trong giai đoạn thử nghiệm. Ai muốn góp ý cho mình thì email cho mình qua <a href="mailto:clocktool.hotro@gmail.com">đây nhé</a> :&#41;</p>
+        <iframe src="https://codesandbox.io/p/devbox/jmpctn?migrateFrom=s5fjlz&embed=1"
+          style="width:100%; height: 100vh; border:0; border-radius: 4px; overflow:hidden;"
+          title="live-channel-template"
+          allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+          sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+        ></iframe>
       </mdui-layout-main>
     </mdui-layout>
 
@@ -139,28 +146,28 @@
       });
     </script>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const openButton = document.getElementById('openBar');
-        const closeButton = document.getElementById('closeBar');
-        const drawer = document.querySelector('.drawer');
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const openButton = document.getElementById('openBar');
+      const closeButton = document.getElementById('closeBar');
+      const drawer = document.querySelector('.drawer');
 
-        if (openButton && closeButton && drawer) {
-          openButton.addEventListener("click", () => {
-            openButton.style.display = 'none';
-            closeButton.style.display = 'block';
-            drawer.open = true; // Set the drawer to open
-          });
+      if (openButton && closeButton && drawer) {
+        openButton.addEventListener("click", () => {
+          openButton.style.display = 'none';
+          closeButton.style.display = 'block';
+          drawer.open = true; // Set the drawer to open
+        });
 
-          closeButton.addEventListener("click", () => {
-            closeButton.style.display = 'none';
-            openButton.style.display = 'block';
-            drawer.open = false; // Set the drawer to close
-          });
-        } else {
-          console.error('One or more elements not found');
-        }
-      });
-    </script>
+        closeButton.addEventListener("click", () => {
+          closeButton.style.display = 'none';
+          openButton.style.display = 'block';
+          drawer.open = false; // Set the drawer to close
+        });
+      } else {
+        console.error('One or more elements not found');
+      }
+    });
+  </script>
 </body>
 </html>
